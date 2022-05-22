@@ -8,7 +8,7 @@ const FollowLarsButton = () => {
   const enabled = router.asPath === "/live";
   //const [initialized, setInitialized] = useCookie("initialized", "false");
 
-  return typeof window === "undefined" ? null : enabled && (
+  return typeof window === "undefined" ? null : enabled ? (
     <button
       type="button"
       onClick={() => (clientId !== 123 ? setClientId(123) : setClientId(0))}
@@ -39,7 +39,7 @@ const FollowLarsButton = () => {
         />
       </svg>
     </button>
-  );
+  ) : null;
 };
 
 export default FollowLarsButton;
