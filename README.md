@@ -219,15 +219,15 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Export latest Contentstack content model and content (you may need to [login](https://www.contentstack.com/docs/developers/cli/authenticate-with-the-cli/) into Contentstack CLI first):
 
-```
-csdx cm:export -a <YOUR MANAGEMENT TOKEN ALIAS> -d ./data/contentstack
-```
+    ```
+    csdx cm:export -a <YOUR MANAGEMENT TOKEN ALIAS> -d ./data/contentstack
+    ```
 
 Export Uniform Dev
 
-```
-npm run pull:context
-```
+    ```
+    npm run pull:context
+    ```
 
 ## Learn More
 
