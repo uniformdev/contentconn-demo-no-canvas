@@ -1,31 +1,32 @@
 import Splitter from "./Splitter";
 import { useQuirks, useScores } from "@uniformdev/context-react";
 import { useUniformContext } from "@uniformdev/context-react";
+import { useRouter } from "next/router";
 
 const randomQuirksSet = [
   {
     industry: "Services",
-    "audienceSegment": "Analysts",
+    audienceSegment: "Analysts",
   },
   {
     industry: "Biotech",
-    "audienceSegment": "Prospects",
+    audienceSegment: "Prospects",
   },
   {
     industry: "Hospitality",
-    "audienceSegment": "Prospects",
+    audienceSegment: "Prospects",
   },
   {
     industry: "Hospitality",
-    "audienceSegment": "Customers",
+    audienceSegment: "Customers",
   },
   {
     industry: "Retail",
-    "audienceSegment": "Prospects",
+    audienceSegment: "Prospects",
   },
   {
     industry: "Retail",
-    "audienceSegment": "Customers",
+    audienceSegment: "Customers",
   },
 ];
 
@@ -38,7 +39,6 @@ function getRandomInt(min: number, max: number) {
 export function CDPLoader({ title }: { title: string }) {
   const { context } = useUniformContext();
   const quirks = useQuirks();
-
   async function handleSetProfileClick(e: React.MouseEvent) {
     e.preventDefault();
 

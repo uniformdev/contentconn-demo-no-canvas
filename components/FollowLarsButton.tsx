@@ -1,16 +1,20 @@
-import useCookie from "react-use-cookie";
+import { useRouter } from "next/router";
+import useLocalStorage from "../lib/useLocalStorage";
+//import useCookie from "react-use-cookie";
 
 const FollowLarsButton = () => {
-  const [clientId, setClientId] = useCookie("client-id", "0");
-  return typeof window === "undefined" ? null : (
+  const [clientId, setClientId] = useLocalStorage("visitorId", 0);
+  const router = useRouter();
+  const enabled = router.asPath === "/live";
+  //const [initialized, setInitialized] = useCookie("initialized", "false");
+
+  return typeof window === "undefined" ? null : enabled && (
     <button
       type="button"
-      onClick={() =>
-        clientId !== "123" ? setClientId("123") : setClientId("0")
-      }
+      onClick={() => (clientId !== 123 ? setClientId(123) : setClientId(0))}
       style={{ position: "fixed", bottom: "1.15rem", left: "1.15rem" }}
       className={
-        clientId === "123"
+        clientId === 123
           ? "bg-red-700 text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center"
           : "text-red-700 border border-red-700 hover:bg-red-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:focus:ring-red-800"
       }

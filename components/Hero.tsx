@@ -15,7 +15,7 @@ export function Hero({
     <>
       <div className="pt-24">
         <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-          <div className="flex flex-col w-full md:w-1/2 justify-center items-start text-center md:text-left min-h-500">
+          <div className="flex flex-col w-full md:w-1/2 justify-center items-start text-center md:text-left md:min-h-500">
             <p className="uppercase tracking-loose w-full">
               This is Uniform demo
             </p>
@@ -32,7 +32,7 @@ export function Hero({
               </Link>
             ) : null}
           </div>
-          <div className="w-full md:w-1/2 py-6 text-center">
+          <div className="w-full md:w-1/2 py-6 pb-24 text-center">
             {image && (
               <img
                 className="w-full md:w-4/5 z-50 max-h-500"

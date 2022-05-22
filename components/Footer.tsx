@@ -1,6 +1,4 @@
 import React from "react";
-import Link from "next/link";
-import Logo from "./Logo";
 import { ToggleEmbeddedContextDevTools } from "@uniformdev/context-devtools";
 import getConfig from "next/config";
 import FollowLarsButton from "./FollowLarsButton";
@@ -21,7 +19,6 @@ const Footer = () => {
         <ToggleEmbeddedContextDevTools
           initialSettings={{
             apiHost: apiHost,
-
             apiKey: apiKey,
             projectId: projectId,
           }}

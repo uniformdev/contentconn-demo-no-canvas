@@ -5,6 +5,7 @@ import NavMenu from "./NavMenu";
 import Logo from "./Logo";
 import { useUniformContext } from "@uniformdev/context-react";
 import { useRouter } from "next/router";
+import useCookie from "react-use-cookie";
 
 const HamburgerIcon = () => (
   <svg
@@ -33,7 +34,8 @@ const Nav = () => {
   const { context } = useUniformContext();
   const scrollPositionY = useScrollPosition();
   const router = useRouter();
-
+  const [initialized, setInitialized] = useCookie("initialized", "false");
+  console.log({ initialized });
   useEffect(() => {
     setScrolled(scrollPositionY > 0);
   }, [scrollPositionY]);
@@ -68,6 +70,7 @@ const Nav = () => {
             </a>
           </Link>
         </div>
+
         <div className="block lg:hidden pr-4">
           <button
             id="nav-toggle"
@@ -83,21 +86,23 @@ const Nav = () => {
             submenuVisible ? "bg-gray-100" : "hidden bg-white"
           }  ${isScrolled ? "bg-white" : "bg-gray-100"}`}
         >
-          <NavMenu />
+          {initialized === "true" ? <NavMenu /> : null}
 
-          <ActionLink
-            isScrolled={isScrolled}
-            onClick={async () => {
-              await context.forget(true);
-              if (submenuVisible) {
-                setSubmenuVisible(!submenuVisible);
-              }
-              document.cookie =
-                "unfrmconf_registered=; Path=/; samesite=lax; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-            }}
-            label="Forget me"
-            icon={<LockIcon />}
-          />
+          {initialized === "true" ? (
+            <ActionLink
+              isScrolled={isScrolled}
+              onClick={async () => {
+                await context.forget(true);
+                if (submenuVisible) {
+                  setSubmenuVisible(!submenuVisible);
+                }
+                document.cookie =
+                  "unfrmconf_registered=; Path=/; samesite=lax; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+              }}
+              label="Forget me"
+              icon={<LockIcon />}
+            />
+          ) : null}
         </div>
       </div>
       <hr className="border-b border-gray-100 opacity-25 my-0 py-0" />

@@ -4,9 +4,9 @@
     - page to simulate audience data.
 
 - [] Live sync solution from Lamarre
-     - add user id specification
+     [X] add user id specification
 
-- [] Mobile menu - close on navigation click
+- [X] Mobile menu - close on navigation click
 
 Nice to haves:
 - [] Update color theme to contentconn
