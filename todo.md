@@ -3,10 +3,10 @@
 - [X] CDP personalization with quirks
     - page to simulate audience data.
 
-- [] Live sync solution from Lamarre
+- [X] Live sync solution from Lamarre
      [X] add user id specification
 
 - [X] Mobile menu - close on navigation click
 
 Nice to haves:
-- [] Update color theme to contentconn
+- [X] Update color theme to contentconn

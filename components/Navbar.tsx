@@ -86,7 +86,7 @@ const Nav = () => {
             submenuVisible ? "bg-gray-100" : "hidden bg-white"
           }  ${isScrolled ? "bg-white" : "bg-gray-100"}`}
         >
-          {initialized === "true" ? <NavMenu /> : null}
+          {initialized === "true" ? <NavMenu isScrolled={isScrolled} /> : null}
 
           {initialized === "true" ? (
             <ActionLink
