@@ -43,8 +43,7 @@ export const getPageBySlug = async (
     .includeReference([
       "components",
       "components.personalized_heros",
-      "components.personalized_talklists",
-      "components.personalized_talklists.talks",
+      "components.personalized_talklists"
     ])
     .addParam("include_dimension", "true")
     .toJSON();
