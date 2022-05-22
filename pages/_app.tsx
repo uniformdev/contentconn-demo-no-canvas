@@ -15,6 +15,7 @@ function UniformContextApp({
   serverUniformContext,
 }: UniformAppProps) {
   return (
+    // @ts-ignore
     <UniformContext context={serverUniformContext ?? clientContext}>
       <Navbar />
       <Component {...pageProps} />
