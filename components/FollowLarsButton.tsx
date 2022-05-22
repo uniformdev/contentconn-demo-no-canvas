@@ -11,7 +11,10 @@ const FollowLarsButton = () => {
   return typeof window === "undefined" ? null : enabled ? (
     <button
       type="button"
-      onClick={() => (clientId !== 123 ? setClientId(123) : setClientId(0))}
+      onClick={() => {
+        clientId !== 123 ? setClientId(123) : setClientId(0);
+        window.location.reload();
+      }}
       style={{ position: "fixed", bottom: "1.15rem", left: "1.15rem" }}
       className={
         clientId === 123
