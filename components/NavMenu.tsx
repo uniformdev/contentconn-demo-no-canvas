@@ -1,10 +1,12 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 const NavMenu = () => (
   <ul className="list-reset lg:flex justify-end flex-1 items-center space-x-2 lg:mr-4">
     <li>
       <Link prefetch={false} href="/">
-        <a className="inline-block py-2 px-4 text-black font-bold no-underline">Home</a>
+        <a className="inline-block py-2 px-4 text-black font-bold no-underline">
+          Home
+        </a>
       </Link>
     </li>
     <li>
@@ -32,6 +34,13 @@ const NavMenu = () => (
       <Link prefetch={false} href="/?utm_campaign=unfrmconf">
         <a className="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4">
           Campaign
+        </a>
+      </Link>
+    </li>
+    <li>
+      <Link prefetch={false} href="/profile">
+        <a className="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4">
+          Profile
         </a>
       </Link>
     </li>

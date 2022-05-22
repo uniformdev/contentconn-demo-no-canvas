@@ -21,6 +21,7 @@ import type {
   IWhyAttend,
   Entry,
 } from "../lib/contentstack";
+import { CDPLoader } from "./CDPLoader";
 
 // @todo fix usage of union type.
 export type EntryUnionType =
@@ -47,6 +48,7 @@ const mappings: ComponentMapping = {
   footer: Footer,
   personalized_hero_list: PersonalizedHeroList,
   personalized_talkslist_list: TalkList,
+  cdp_profile_loader: CDPLoader,
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

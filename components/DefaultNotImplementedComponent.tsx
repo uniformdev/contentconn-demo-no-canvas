@@ -1,5 +1,5 @@
-import { Entry } from '../lib/contentstack';
-import React from 'react';
+import { Entry } from "../lib/contentstack";
+import React from "react";
 
 /**
  * A default implementation of a component-not-implemented component.
@@ -9,8 +9,9 @@ import React from 'react';
  **/
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function DefaultNotImplementedComponent(props: Entry<any>) {
-  const componentType = props.sys.contentType.sys.id;
-
+  console.log({ props });
+  const componentType = props._content_type_uid;
+  console.log({ componentType });
   if (!componentType) {
     return null;
   }
@@ -18,17 +19,17 @@ export function DefaultNotImplementedComponent(props: Entry<any>) {
   return (
     <div
       style={{
-        borderLeft: '10px solid #e42535!important',
-        padding: '0.01em 16px 16px',
-        borderRadius: '16px',
-        backgroundColor: 'rgba(122, 215, 218, 0.3)',
-        color: '#1d3557',
+        borderLeft: "10px solid #e42535!important",
+        padding: "0.01em 16px 16px",
+        borderRadius: "16px",
+        backgroundColor: "rgba(122, 215, 218, 0.3)",
+        color: "#1d3557",
       }}
     >
       <h2>Component: {componentType}</h2>
       <p>
-        <strong>{componentType}</strong> has no React implementation. It may need to be added to your{' '}
-        <code>resolveRenderer()</code> function.
+        <strong>{componentType}</strong> has no React implementation. It may
+        need to be added to your <code>resolveRenderer()</code> function.
       </p>
       <details>
         <summary>Props</summary>
