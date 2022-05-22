@@ -13,11 +13,14 @@ export function TalkList({ title }: ITalksList) {
   const hasScores = scores.techies > 0 || scores.nonTechies > 0;
 
   // for fun - personalizing the component title based on the tracker scores
+  console.log({ scores });
   let headerTitle = title;
-  if (scores.techies > 0) {
+  if (scores.techies > 0 && !scores.nonTechies) {
     headerTitle += " for developers";
-  } else if (scores.nonTechies > 0) {
+  } else if (scores.nonTechies > 0 && !scores.techies) {
     headerTitle += " for marketers";
+  } else if (scores.nonTechies > 0 && scores.techies > 0) {
+    headerTitle += " for marketing technologists 🔥";
   }
 
   const variations = formatPersonalizeVariants(talks!, hasScores);

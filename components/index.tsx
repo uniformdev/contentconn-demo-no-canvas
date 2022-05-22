@@ -1,14 +1,14 @@
-import { ComponentType } from 'react';
-import { DefaultNotImplementedComponent } from './DefaultNotImplementedComponent';
-import { Hero } from './Hero';
-import { TalkList } from './TalkList';
-import { WhyAttend } from './WhyAttend';
-import { Talk } from './Talk';
-import { RegisterForm } from './RegisterForm';
-import Navbar from './Navbar';
-import Footer from './Footer';
-import { PersonalizedTalkList } from './PersonalizedTalkList';
-import { PersonalizedHeroList } from './PersonalizedHeroList';
+import { ComponentType } from "react";
+import { DefaultNotImplementedComponent } from "./DefaultNotImplementedComponent";
+import { Hero } from "./Hero";
+import { TalkList } from "./TalkList";
+import { WhyAttend } from "./WhyAttend";
+import { Talk } from "./Talk";
+import { RegisterForm } from "./RegisterForm";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import { PersonalizedTalkList } from "./PersonalizedTalkList";
+import { PersonalizedHeroList } from "./PersonalizedHeroList";
 import type {
   IHero,
   IPersonalizedHeroList,
@@ -20,7 +20,7 @@ import type {
   ITalksList,
   IWhyAttend,
   Entry,
-} from '../lib/contentstack';
+} from "../lib/contentstack";
 
 // @todo fix usage of union type.
 export type EntryUnionType =
@@ -46,11 +46,13 @@ const mappings: ComponentMapping = {
   header: Navbar,
   footer: Footer,
   personalized_hero_list: PersonalizedHeroList,
-  personalized_talkslist_list: PersonalizedTalkList,
+  personalized_talkslist_list: TalkList,
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function resolveRenderer(contentstackEntry: Entry<any>): ComponentType<Entry<any>> {
+export function resolveRenderer(
+  contentstackEntry: Entry<any>
+): ComponentType<Entry<any>> {
   const componentImpl = mappings[contentstackEntry._content_type_uid];
   return componentImpl ?? DefaultNotImplementedComponent;
 }
