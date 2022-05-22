@@ -27,7 +27,7 @@ const randomQuirksSet = [
   {
     industry: "Retail",
     audienceSegment: "Customers",
-  },
+  }
 ];
 
 function getRandomInt(min: number, max: number) {
