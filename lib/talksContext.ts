@@ -1,5 +1,5 @@
-import React from 'react';
-import { ITalk } from '../@types/generated/contentful';
+import React from "react";
+import { ITalk } from "./contentstack";
 
 const TalksContext = React.createContext<ITalk[] | undefined>(undefined);
 

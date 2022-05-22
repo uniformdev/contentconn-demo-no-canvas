@@ -1,6 +1,6 @@
 import React from "react";
 import { Personalize } from "@uniformdev/context-react";
-import { PersonalizedVariant } from "@uniformdev/context/*";
+import { PersonalizedVariant, ScoreVector } from "@uniformdev/context/*";
 import { useScores } from "@uniformdev/context-react";
 import { ITalk, ITalksList } from "../lib/contentstack";
 import TalksContext from "../lib/talksContext";
@@ -13,16 +13,7 @@ export function TalkList({ title }: ITalksList) {
   const hasScores = scores.techies > 0 || scores.nonTechies > 0;
 
   // for fun - personalizing the component title based on the tracker scores
-  console.log({ scores });
-  let headerTitle = title;
-  if (scores.techies > 0 && !scores.nonTechies) {
-    headerTitle += " for developers";
-  } else if (scores.nonTechies > 0 && !scores.techies) {
-    headerTitle += " for marketers";
-  } else if (scores.nonTechies > 0 && scores.techies > 0) {
-    headerTitle += " for marketing technologists 🔥";
-  }
-
+  const headerTitle = getHeaderTitle(title, scores);
   const variations = formatPersonalizeVariants(talks!, hasScores);
 
   return (
@@ -45,6 +36,18 @@ export function TalkList({ title }: ITalksList) {
     </fieldset>
   );
 }
+
+const getHeaderTitle = (title: string, scores: ScoreVector) => {
+  let headerTitle = title;
+  if (scores.techies > 0 && !scores.nonTechies) {
+    headerTitle += " for developers";
+  } else if (scores.nonTechies > 0 && !scores.techies) {
+    headerTitle += " for marketers";
+  } else if (scores.nonTechies > 0 && scores.techies > 0) {
+    headerTitle += " for marketing technologists 🔥";
+  }
+  return headerTitle;
+};
 
 export function formatPersonalizeVariants<T extends ITalk | undefined>(
   variants: T[],
