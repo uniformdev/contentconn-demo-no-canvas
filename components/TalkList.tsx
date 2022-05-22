@@ -4,7 +4,6 @@ import { PersonalizedVariant, ScoreVector } from "@uniformdev/context/*";
 import { useScores } from "@uniformdev/context-react";
 import { ITalk, ITalksList } from "../lib/contentstack";
 import TalksContext from "../lib/talksContext";
-import { PERSONALIZATION_CRITERIA_FIELD_ID } from "../lib/constants";
 import { Talk } from "./Talk";
 
 export function TalkList({ title }: ITalksList) {
@@ -25,7 +24,7 @@ export function TalkList({ title }: ITalksList) {
           </h1>
           {variations ? (
             <Personalize
-              name={"asdas"}
+              name={"TalkList"}
               count={3}
               variations={variations}
               component={Talk}
