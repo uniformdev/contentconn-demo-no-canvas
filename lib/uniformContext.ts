@@ -8,17 +8,17 @@ import {
   VisitorData,
   enableDebugConsoleLogDrain,
 } from "@uniformdev/context";
-import { enableGoogleGtagAnalytics } from "@uniformdev/context-gtag";
-import getConfig from "next/config";
+//import { enableGoogleGtagAnalytics } from "@uniformdev/context-gtag";
+//import getConfig from "next/config";
 import { createClient, Client, Room, LiveObject } from "@liveblocks/client";
 import { nanoid } from "nanoid";
 
 import type { NextPageContext } from "next";
 import manifest from "./context-manifest.json";
 
-const {
-  publicRuntimeConfig: { gtmId },
-} = getConfig();
+// const {
+//   publicRuntimeConfig: { gtmId },
+// } = getConfig();
 
 class YoloTransitionStore extends TransitionDataStore {
   readonly visitorId: string | undefined;
@@ -123,9 +123,9 @@ export function createUniformContext(serverContext?: NextPageContext) {
     enableDebugConsoleLogDrain("debug"),
   ];
 
-  if (gtmId) {
-    plugins.push(enableGoogleGtagAnalytics());
-  }
+  // if (gtmId) {
+  //   plugins.push(enableGoogleGtagAnalytics());
+  // }
 
   return new Context({
     defaultConsent: true,

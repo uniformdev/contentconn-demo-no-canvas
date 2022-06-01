@@ -9,10 +9,10 @@ import Document, {
 import { enableNextSsr } from "@uniformdev/context-next";
 import { createUniformContext } from "../lib/uniformContext";
 
-import getConfig from "next/config";
-const {
-  publicRuntimeConfig: { gtmId },
-} = getConfig();
+// import getConfig from "next/config";
+// const {
+//   publicRuntimeConfig: { gtmId },
+// } = getConfig();
 
 class MyDocument extends Document {
   static async getInitialProps(
@@ -45,7 +45,7 @@ class MyDocument extends Document {
             content="UniformConf, a Uniform content demo site"
           />
 
-          <script
+          {/* <script
             src={`https://www.googletagmanager.com/gtag/js?id=${gtmId}`}
           />
           <script
@@ -59,17 +59,17 @@ class MyDocument extends Document {
           gtag('config', '${gtmId}');
         `,
             }}
-          ></script>
+          ></script> */}
         </Head>
         <body className="leading-normal tracking-normal text-white gradient">
           <Main />
           <NextScript />
-          <noscript
+          {/* <noscript
             dangerouslySetInnerHTML={{
               __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}"
             height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
             }}
-          ></noscript>
+          ></noscript> */}
         </body>
       </Html>
     );
