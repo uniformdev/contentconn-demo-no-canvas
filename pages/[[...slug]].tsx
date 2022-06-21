@@ -7,7 +7,6 @@ import {
   enhance,
 } from "@uniformdev/canvas";
 import { enhancers } from "../lib/enhancers";
-
 import { canvasClient } from "../lib/canvasClient";
 
 export default Page;

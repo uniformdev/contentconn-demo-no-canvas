@@ -27,5 +27,5 @@ export const enhancers = new EnhancerBuilder().parameterType(
   CANVAS_CONTENTSTACK_PARAMETER_TYPES,
   contentstackConfigured
     ? compose(contentstackEnhancer(), contentstackModelConverter)
-    : undefined
+    : () => {}
 );
