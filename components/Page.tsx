@@ -1,18 +1,21 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Track } from "@uniformdev/context-react";
+import { Composition, Slot } from "@uniformdev/canvas-react";
 import { IPage, ITalk } from "../lib/contentstack";
 import { PageComponentsList } from "./PageComponentsList";
 import { EnrichmentData } from "@uniformdev/context";
 import TalksContext from "../lib/talksContext";
+import { resolveRenderer } from "../components/composableComponents";
 
 export type PageProps = {
   preview: boolean;
   page: IPage;
   talks: ITalk[] | undefined;
+  composition: any;
 };
 
-const Page: NextPage<PageProps> = ({ page, talks }) => {
+const Page: NextPage<PageProps> = ({ page, talks, composition }) => {
   const enrichments: EnrichmentData[] = [];
   if (page?.context_enrichment_tags?.name) {
     enrichments.push(...page.context_enrichment_tags.name);
@@ -27,6 +30,9 @@ const Page: NextPage<PageProps> = ({ page, talks }) => {
         />
       </Head>
       <TalksContext.Provider value={talks}>
+        <Composition data={composition} resolveRenderer={resolveRenderer}>
+          <Slot name="main" />
+        </Composition>
         {page?.components && (
           <PageComponentsList components={page?.components} />
         )}

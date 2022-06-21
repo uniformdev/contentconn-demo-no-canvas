@@ -35,7 +35,7 @@ const Nav = () => {
   const scrollPositionY = useScrollPosition();
   const router = useRouter();
   const [initialized, setInitialized] = useCookie("initialized", "false");
-  console.log({ initialized });
+
   useEffect(() => {
     setScrolled(scrollPositionY > 0);
   }, [scrollPositionY]);

@@ -2,15 +2,10 @@ import Link from "next/link";
 import Splitter from "./Splitter";
 import { IHero } from "../lib/contentstack";
 
-type HeroProps = IHero;
-
-export function Hero({
-  title,
-  description,
-  button_text,
-  image,
-  button_link_slug,
-}: HeroProps) {
+export function Hero(props: any) {
+  const { content } = props;
+  const { title, description, button_text, image, button_link_slug } =
+    content || {};
   return (
     <>
       <div className="pt-24">
@@ -37,7 +32,7 @@ export function Hero({
               <img
                 className="w-full md:w-4/5 z-50 max-h-500"
                 height={500}
-                src={image.url}
+                src={image.src}
                 alt={button_text}
               />
             )}
