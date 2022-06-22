@@ -22,15 +22,21 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (
   const page = await getPageBySlug(preview, pageSlug);
   const talks = await getAllTalks(preview);
 
-  const { composition } = await canvasClient.getCompositionBySlug({
-    slug: pageSlug,
-    state:
-      process.env.NODE_ENV === "development" || preview
-        ? CANVAS_DRAFT_STATE
-        : CANVAS_PUBLISHED_STATE,
-  });
+  let canvasComposition = {};
+  try {
+    const { composition } = await canvasClient.getCompositionBySlug({
+      slug: pageSlug,
+      state:
+        process.env.NODE_ENV === "development" || preview
+          ? CANVAS_DRAFT_STATE
+          : CANVAS_PUBLISHED_STATE,
+    });
 
-  await enhance({ composition, enhancers, context });
+    await enhance({ composition, enhancers, context });
+    canvasComposition = composition;
+  } catch (error) {
+    console.log("unable to fetch composition with slug " + pageSlug);
+  }
 
   if (!page) {
     return {
@@ -43,7 +49,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (
       preview,
       page,
       talks,
-      composition,
+      composition: canvasComposition,
     },
   };
 };
