@@ -12,6 +12,9 @@ const nextConfig = {
   publicRuntimeConfig: {
     gtmId: process.env.GTM_ID ?? "",
   },
+  images: {
+    domains: ['images.contentstack.io']
+  },
 };
 
 module.exports = nextConfig;

@@ -2,7 +2,7 @@ import { ComponentType } from "react";
 import { DefaultNotImplementedComponent } from "./DefaultNotImplementedComponent";
 import { Hero } from "./Hero";
 import { TalkList } from "./TalkList";
-import { WhyAttend } from "./WhyAttend";
+import { WhyAttend, WhyAttendTestPhotoLocation } from "./WhyAttend";
 import { Talk } from "./Talk";
 import { RegisterForm } from "./RegisterForm";
 import Navbar from "./Navbar";
@@ -42,7 +42,8 @@ const mappings: ComponentMapping = {
   hero: Hero,
   talks_list: TalkList,
   talk: Talk,
-  why_attend: WhyAttend,
+  //why_attend: WhyAttend,
+  why_attend: WhyAttendTestPhotoLocation,
   registration_form: RegisterForm,
   header: Navbar,
   footer: Footer,
