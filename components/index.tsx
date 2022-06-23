@@ -42,7 +42,7 @@ const mappings: ComponentMapping = {
   hero: Hero,
   talks_list: TalkList,
   talk: Talk,
-  why_attend: WhyAttend,
+  why_attend: TalkList,
   //why_attend: WhyAttendTestPhotoLocation,
   registration_form: RegisterForm,
   header: Navbar,
