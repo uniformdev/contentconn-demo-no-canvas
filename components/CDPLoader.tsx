@@ -1,7 +1,6 @@
 import Splitter from "./Splitter";
 import { useQuirks, useScores } from "@uniformdev/context-react";
 import { useUniformContext } from "@uniformdev/context-react";
-import { useRouter } from "next/router";
 
 const randomQuirksSet = [
   {
