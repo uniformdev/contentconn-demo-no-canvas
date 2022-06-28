@@ -1,9 +1,10 @@
-import { IAsset, IWhyAttend } from "../lib/contentstack";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Test } from "@uniformdev/context-react";
 import { TestVariant } from "@uniformdev/context";
-import Image from "next/image";
+
+import { IAsset, IWhyAttend } from "../lib/contentstack";
 
 enum WhyAttendVariant {
   Left = "left image",
@@ -22,7 +23,7 @@ const locationVariants: TestVariant[] = [
 export const WhyAttendTestPhotoLocation = (props: IWhyAttend) => {
   return (
     <Test
-      name="whyAttendTest"
+      name="whyAttend"
       variations={locationVariants}
       component={({ id }) => <WhyAttend {...props} variant={id} />}
     />
@@ -35,7 +36,7 @@ export const WhyAttend = (props: any) => {
     <section className="bg-white border-b py-8">
       <div className="container max-w-5xl mx-auto m-8">
         <h1 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-          {JSON.stringify(variant)}
+          Why attend
         </h1>
         <div className="w-full mb-4">
           <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t" />

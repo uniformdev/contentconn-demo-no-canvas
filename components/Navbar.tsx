@@ -34,7 +34,6 @@ const Nav = () => {
   const { context } = useUniformContext();
   const scrollPositionY = useScrollPosition();
   const router = useRouter();
-  const [initialized, setInitialized] = useCookie("initialized", "false");
 
   useEffect(() => {
     setScrolled(scrollPositionY > 0);
@@ -86,23 +85,20 @@ const Nav = () => {
             submenuVisible ? "bg-gray-100" : "hidden bg-white"
           }  ${isScrolled ? "bg-white" : "bg-gray-100"}`}
         >
-          {initialized === "true" ? <NavMenu isScrolled={isScrolled} /> : null}
-
-          {initialized === "true" ? (
-            <ActionLink
-              isScrolled={isScrolled}
-              onClick={async () => {
-                await context.forget(true);
-                if (submenuVisible) {
-                  setSubmenuVisible(!submenuVisible);
-                }
-                document.cookie =
-                  "unfrmconf_registered=; Path=/; samesite=lax; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-              }}
-              label="Forget me"
-              icon={<LockIcon />}
-            />
-          ) : null}
+          <NavMenu isScrolled={isScrolled} />
+          <ActionLink
+            isScrolled={isScrolled}
+            onClick={async () => {
+              await context.forget(true);
+              if (submenuVisible) {
+                setSubmenuVisible(!submenuVisible);
+              }
+              document.cookie =
+                "unfrmconf_registered=; Path=/; samesite=lax; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+            }}
+            label="Forget me"
+            icon={<LockIcon />}
+          />
         </div>
       </div>
       <hr className="border-b border-gray-100 opacity-25 my-0 py-0" />
