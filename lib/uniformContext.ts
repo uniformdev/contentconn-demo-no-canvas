@@ -7,15 +7,26 @@ import {
 } from "@uniformdev/context";
 import { NextCookieTransitionDataStore } from "@uniformdev/context-next";
 import type { NextPageContext } from "next";
-import manifest from "./context-manifest.json";
+import getConfig from "next/config";
 import { enableGoogleGtagAnalytics } from "@uniformdev/context-gtag";
+import manifest from "./context-manifest.json";
 
 export function createUniformContext(serverContext?: NextPageContext) {
   const plugins: ContextPlugin[] = [
     enableContextDevTools(),
     enableDebugConsoleLogDrain("debug"),
-    enableGoogleGtagAnalytics(),
   ];
+
+  const {
+    publicRuntimeConfig: { gtmId },
+  } = getConfig();
+
+  if (gtmId) {
+    console.info(
+      "GTM ID is set, activating the enableGoogleGtagAnalytics plugin with Uniform Tracker."
+    );
+    plugins.push(enableGoogleGtagAnalytics());
+  }
 
   return new Context({
     defaultConsent: true,
