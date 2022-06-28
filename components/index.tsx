@@ -2,7 +2,7 @@ import { ComponentType } from "react";
 import { DefaultNotImplementedComponent } from "./DefaultNotImplementedComponent";
 import { Hero } from "./Hero";
 import { TalkList } from "./TalkList";
-//import { WhyAttend, WhyAttendTestPhotoLocation } from "./WhyAttend";
+import { WhyAttend, WhyAttendTestPhotoLocation } from "./WhyAttend";
 import { Talk } from "./Talk";
 import { RegisterForm } from "./RegisterForm";
 import Navbar from "./Navbar";
