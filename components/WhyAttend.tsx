@@ -10,9 +10,13 @@ enum WhyAttendVariant {
   Right = "right image",
 }
 
+type WhyAttendProps = IWhyAttend & {
+  variant: WhyAttendVariant | string;
+};
+
 const locationVariants: TestVariant[] = [
-  { id: WhyAttendVariant.Left, testDistribution: 50 },
-  { id: WhyAttendVariant.Right, testDistribution: 50 },
+  { id: WhyAttendVariant.Left },
+  { id: WhyAttendVariant.Right },
 ];
 
 export const WhyAttendTestPhotoLocation = (props: IWhyAttend) => {
