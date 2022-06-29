@@ -25,7 +25,7 @@ export function createUniformContext(serverContext?: NextPageContext) {
     console.info(
       "GTM ID is set, activating the enableGoogleGtagAnalytics plugin with Uniform Tracker."
     );
-    plugins.push(enableGoogleGtagAnalytics());
+    plugins.push(enableGoogleGtagAnalytics({ emitAll: true }));
   }
 
   return new Context({
