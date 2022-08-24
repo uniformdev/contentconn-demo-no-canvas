@@ -30,9 +30,10 @@ const Page: NextPage<PageProps> = ({ page, talks, composition }) => {
         />
       </Head>
       <TalksContext.Provider value={talks}>
+        {/* FYI: you can enable Canvas this way to co-exist with page definitions from Contentstack
         <Composition data={composition} resolveRenderer={resolveRenderer}>
           <Slot name="main" />
-        </Composition>
+        </Composition> */}
         {page?.components && (
           <PageComponentsList components={page?.components} />
         )}
