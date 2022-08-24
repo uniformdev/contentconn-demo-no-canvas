@@ -3,14 +3,14 @@ import { useQuirks, useScores } from "@uniformdev/context-react";
 import { useUniformContext } from "@uniformdev/context-react";
 
 const randomQuirksSet = [
-  {
-    industry: "Services",
-    audienceSegment: "Analysts",
-  },
-  {
-    industry: "Biotech",
-    audienceSegment: "Prospects",
-  },
+  // {
+  //   industry: "Services",
+  //   audienceSegment: "Analysts",
+  // },
+  // {
+  //   industry: "Biotech",
+  //   audienceSegment: "Prospects",
+  // },
   {
     industry: "Hospitality",
     audienceSegment: "Prospects",
@@ -26,7 +26,7 @@ const randomQuirksSet = [
   {
     industry: "Retail",
     audienceSegment: "Customers",
-  }
+  },
 ];
 
 function getRandomInt(min: number, max: number) {
