@@ -30,7 +30,7 @@ UNIFORM_PROJECT_ID='a99887b0-9e34-4f73-b30a-738118c67ebc'
 1. If the command above is successful, now let's pull the newly imported Context definitions into a local manifest stored in `/lib/context-manifest.json` by running this command:
 
     ```
-    npm run generate:manifest
+    npm run pull:manifest
     ```
 1. Check `/lib/context-manifest.json` and ensure the manifest is not empty, you should be able to see this in there:
     ```json
