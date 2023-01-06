@@ -195,9 +195,9 @@ Follow these steps in order to import the content for this showcase app into you
 
 1. Now we are ready to import. Run the following command:
     ```bash
-    csdx cm:import -a <YOUR_API_MANAGEMENT_TOKEN_ALIAS> -d ./data/contentstack
+    csdx cm:import -a <YOUR_API_MANAGEMENT_TOKEN_ALIAS> -d ./data/contentstack/main
     ```
-
+App configurations encryption key: ```context```
 ### Run the project
 
 Run dev server:
