@@ -1,5 +1,4 @@
 import React from "react";
-import { ToggleEmbeddedContextDevTools } from "@uniformdev/context-devtools";
 import getConfig from "next/config";
 import FollowLarsButton from "./FollowLarsButton";
 const { serverRuntimeConfig } = getConfig();
@@ -15,14 +14,7 @@ const Footer = () => {
             Uniform starter for Contentstack © {new Date().getFullYear()}
           </p>
         </div>
-        <FollowLarsButton />
-        <ToggleEmbeddedContextDevTools
-          initialSettings={{
-            apiHost: apiHost,
-            apiKey: apiKey,
-            projectId: projectId,
-          }}
-        />
+        {/* <FollowLarsButton /> */}
       </div>
     </footer>
   );

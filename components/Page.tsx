@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Track } from "@uniformdev/context-react";
-import { Composition, Slot } from "@uniformdev/canvas-react";
 import { IPage, ITalk } from "../lib/contentstack";
 import { PageComponentsList } from "./PageComponentsList";
 import { EnrichmentData } from "@uniformdev/context";
 import TalksContext from "../lib/talksContext";
-import { resolveRenderer } from "../components/composableComponents";
+// import { UniformComposition, UniformSlot } from "@uniformdev/canvas-react";
+// import { resolveRenderer } from "../components/composableComponents";
 
 export type PageProps = {
   preview: boolean;
