@@ -97,6 +97,7 @@ const ImageRightCallout = ({ description, image, variant }: CalloutProps) => {
             src={image?.url}
             layout="responsive"
             loading="lazy"
+            alt={"Register now"}
             className="w-full sm:h-64 mx-auto"
             height={373}
             width={560}
@@ -123,6 +124,7 @@ const ImageLeftCallout = ({ description, image, variant }: CalloutProps) => {
             src={image?.url}
             layout="responsive"
             loading="lazy"
+            alt={"why attend"}
             className="w-5/6 sm:h-64 mx-auto"
             height={373}
             width={560}

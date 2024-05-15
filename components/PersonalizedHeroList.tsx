@@ -10,7 +10,6 @@ export function PersonalizedHeroList(props: IPersonalizedHeroList) {
 
   const variations = formatPersonalizeVariants(props.personalized_heros);
 
-  //@todo consider adding "count" field to Personalized List content type from the app
   return (
     <Personalize
       name={props.title ?? "Default name for Personalized list of Heros"}

@@ -19,7 +19,22 @@ class MyDocument extends Document {
     ctx: DocumentContext
   ): Promise<DocumentInitialProps> {
     const serverTracker = createUniformContext(ctx);
+    const headers = ctx.req?.headers;
+
+    const quirks = {
+      "ntl-country-code": "US",
+      "ntl-subdiv-code": "CA",
+      "ntl-city": "San Francisco",
+    };
+
+    console.log({ headers, quirks });
+
+    await serverTracker.update({
+      quirks,
+    });
+
     enableNextSsr(ctx, serverTracker);
+
     return await Document.getInitialProps(ctx);
   }
 

@@ -1,21 +1,27 @@
-import React, { useState } from 'react';
-import { parse } from 'cookie';
-import Link from 'next/link';
-import { useUniformContext } from '@uniformdev/context-react';
-import Splitter from './Splitter';
-import { IRegistrationForm } from '../lib/contentstack';
+import React, { useState } from "react";
+import { parse } from "cookie";
+import Link from "next/link";
+import { useUniformContext } from "@uniformdev/context-react";
+import Splitter from "./Splitter";
+import { IRegistrationForm } from "../lib/contentstack";
 
 export type RegisterProps = IRegistrationForm;
 
-export function RegisterForm({ title, registered_text, button_text }: RegisterProps) {
+export function RegisterForm({
+  title,
+  registered_text,
+  button_text,
+}: RegisterProps) {
   const [registered, setRegistered] = useState(
-    typeof document !== 'undefined' ? !!document.cookie.match(/unfrmconf_registered/) : false
+    typeof document !== "undefined"
+      ? !!document.cookie.match(/unfrmconf_registered/)
+      : false
   );
 
   const { context } = useUniformContext();
 
   const onRegister = () => {
-    document.cookie = 'unfrmconf_registered=true; path=/; samesite=lax';
+    document.cookie = "unfrmconf_registered=true; path=/; samesite=lax";
     context.update({
       cookies: parse(document.cookie),
     });
@@ -28,7 +34,9 @@ export function RegisterForm({ title, registered_text, button_text }: RegisterPr
           <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
             <p className="uppercase tracking-loose w-full">Uniform conf</p>
             {registered ? (
-              <h1 className="my-4 text-5xl font-bold leading-tight">You are successfully registered.</h1>
+              <h1 className="my-4 text-5xl font-bold leading-tight">
+                You are successfully registered.
+              </h1>
             ) : (
               <h1 className="my-4 text-5xl font-bold leading-tight">{title}</h1>
             )}
@@ -36,10 +44,11 @@ export function RegisterForm({ title, registered_text, button_text }: RegisterPr
               {registered ? (
                 <>
                   <p className="pb-16">{registered_text}</p>
-                  <Link href="/">
-                    <a className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">
-                      Return Home
-                    </a>
+                  <Link
+                    href="/"
+                    className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
+                  >
+                    Return Home
                   </Link>
                 </>
               ) : (
