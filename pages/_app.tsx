@@ -9,13 +9,9 @@ import "../styles/globals.css";
 
 const clientContext = createUniformContext();
 
-function UniformContextApp({
-  Component,
-  pageProps,
-  serverUniformContext,
-}: UniformAppProps) {
+function UniformContextApp({ Component, pageProps }: UniformAppProps) {
   return (
-    <UniformContext context={clientContext ?? serverUniformContext}>
+    <UniformContext context={clientContext} outputType="edge">
       <Navbar />
       <Component {...pageProps} />
       <Footer />
