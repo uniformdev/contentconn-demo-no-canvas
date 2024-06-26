@@ -15,7 +15,7 @@ function UniformContextApp({
   serverUniformContext,
 }: UniformAppProps) {
   return (
-    <UniformContext context={serverUniformContext ?? clientContext}>
+    <UniformContext context={clientContext ?? serverUniformContext}>
       <Navbar />
       <Component {...pageProps} />
       <Footer />

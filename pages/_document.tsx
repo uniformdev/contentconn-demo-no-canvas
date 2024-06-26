@@ -20,14 +20,20 @@ class MyDocument extends Document {
   ): Promise<DocumentInitialProps> {
     const serverTracker = createUniformContext(ctx);
     const headers = ctx.req?.headers;
+    const geoHeaders = headers?.["x-nf-geo"] as string;
+    const geo = geoHeaders
+      ? JSON.parse(Buffer.from(geoHeaders, "base64").toString("utf-8"))
+      : {};
 
     const quirks = {
-      "ntl-country-code": "US",
-      "ntl-subdiv-code": "CA",
-      "ntl-city": "San Francisco",
+      "geo-city": geo?.city,
+      "geo-country": geo?.country?.code,
+      "geo-state": geo?.subdivision?.code,
+      "geo-latitude": geo?.latitude,
+      "geo-longitude": geo?.longitude,
     };
 
-    console.log({ headers, quirks });
+    console.log({ quirks });
 
     await serverTracker.update({
       quirks,
