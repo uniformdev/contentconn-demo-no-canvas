@@ -1,5 +1,5 @@
-import type { GetServerSideProps } from "next";
-import { getPageBySlug, getAllTalks } from "../lib/api";
+import type { GetStaticPaths, GetStaticProps } from "next";
+import { getPageBySlug, getAllTalks, getAllEntries } from "../lib/api";
 import Page, { PageProps } from "../components/Page";
 import {
   CANVAS_DRAFT_STATE,
@@ -9,11 +9,7 @@ import {
 import { enhancers } from "../lib/enhancers";
 import { canvasClient } from "../lib/canvasClient";
 
-export default Page;
-
-export const getServerSideProps: GetServerSideProps<PageProps> = async (
-  context
-) => {
+export const getStaticProps: GetStaticProps<PageProps> = async (context) => {
   const slug = context?.params?.slug;
   const slugString = Array.isArray(slug) ? slug.join("/") : slug;
   const preview = Boolean(context.preview);
@@ -53,3 +49,11 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (
     },
   };
 };
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const entries = await getAllEntries(false);
+  const paths = entries.map((page: any) => page.slug);
+  return { paths: paths, fallback: false };
+};
+
+export default Page;

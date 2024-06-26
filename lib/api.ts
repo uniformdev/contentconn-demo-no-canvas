@@ -1,5 +1,6 @@
 import contentstack from "contentstack";
 import { Entry, IPage, ITalk, StandardEntryFields } from "./contentstack";
+import * as Utils from "@contentstack/utils";
 
 if (!process.env.CONTENTSTACK_STACK_API_KEY) {
   throw new Error("CONTENTSTACK_STACK_API_KEY env not set.");
@@ -43,7 +44,7 @@ export const getPageBySlug = async (
     .includeReference([
       "components",
       "components.personalized_heros",
-      "components.personalized_talklists"
+      "components.personalized_talklists",
     ])
     .addParam("include_dimension", "true")
     .toJSON();
@@ -51,6 +52,57 @@ export const getPageBySlug = async (
 
   const [first] = result[0];
   return first ? { ...first, _content_type_uid: "page" } : undefined;
+};
+
+const renderOption = {
+  span: (node: any, next: any) => next(node.children),
+};
+
+type GetEntry = {
+  contentTypeUid: string;
+  referenceFieldPath: string[] | undefined;
+  jsonRtePath: string[] | undefined;
+  preview: boolean;
+};
+
+export const getEntry = ({
+  contentTypeUid,
+  referenceFieldPath,
+  jsonRtePath,
+  preview,
+}: GetEntry) => {
+  return new Promise((resolve, reject) => {
+    const query = getClient(preview).ContentType(contentTypeUid).Query();
+    if (referenceFieldPath) query.includeReference(referenceFieldPath);
+    query
+      .toJSON()
+      .find()
+      .then(
+        (result) => {
+          jsonRtePath &&
+            Utils.jsonToHTML({
+              entry: result,
+              paths: jsonRtePath,
+              renderOption,
+            });
+          resolve(result);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+  });
+};
+
+export const getAllEntries = async (preview: boolean): Promise<any> => {
+  const response: any = await getEntry({
+    contentTypeUid: "page",
+    referenceFieldPath: undefined,
+    jsonRtePath: undefined,
+    preview,
+  });
+
+  return response[0];
 };
 
 export const getEntriesByContentType = async <T extends StandardEntryFields>(
@@ -64,11 +116,6 @@ export const getEntriesByContentType = async <T extends StandardEntryFields>(
     .includeContentType()
     .toJSON();
   const result = await query.find();
-
-  // result is array where -
-  // result[0] == entry objects
-  // result[result.length-1] == entry objects count included only when .includeCount() is queried.
-  // result[1] == schema of the content type is included when .includeContentType() is queried.
   const entries = result[0].map((entry: Entry<any>) => {
     entry._content_type_uid = type;
     return entry;
