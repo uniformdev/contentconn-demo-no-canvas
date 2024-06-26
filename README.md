@@ -1,4 +1,4 @@
-# ContentConn 2022 Personalization Workshop demo
+# Uniform Context + Contentstack starter
 
 This is StarterKit/Example of [Next.js](https://nextjs.org/) project with direct integration of [Uniform Context](https://docs.uniform.app/context/) with [Contentstack](https://www.contentstack.com/) via Uniform Context app
 
