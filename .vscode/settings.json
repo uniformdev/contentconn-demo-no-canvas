@@ -1,7 +1,14 @@
 {
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#093335",
-        "titleBar.activeBackground": "#0C474A",
-        "titleBar.activeForeground": "#F3FDFD"
-    }
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#093335",
+    "titleBar.activeBackground": "#0C474A",
+    "titleBar.activeForeground": "#F3FDFD"
+  },
+  "deno.enable": true,
+  "deno.enablePaths": [
+    "netlify/edge-functions"
+  ],
+  "deno.unstable": true,
+  "deno.importMap": ".netlify/edge-functions-import-map.json",
+  "deno.path": "/Users/alex/Library/Preferences/netlify/deno-cli/deno"
 }

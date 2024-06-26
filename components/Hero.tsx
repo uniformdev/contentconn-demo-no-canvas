@@ -1,10 +1,19 @@
 import Link from "next/link";
 import Splitter from "./Splitter";
 import { IHero } from "../lib/contentstack";
+import { flattenValues } from "@uniformdev/canvas";
 
-export function Hero(props: IHero) {
-  const { title, description, button_text, image, button_link_slug } =
-    props || {};
+export function Hero({
+  title,
+  description,
+  button_text,
+  image,
+  button_link_slug,
+}: IHero) {
+  const heroImage = flattenValues(image, {
+    toSingle: true,
+  });
+
   return (
     <>
       <div className="pt-24">
@@ -27,11 +36,11 @@ export function Hero(props: IHero) {
             ) : null}
           </div>
           <div className="w-full md:w-1/2 py-6 pb-24 text-center">
-            {image && (
+            {heroImage?.url && (
               <img
                 className="w-full md:w-4/5 z-50 max-h-500"
                 height={500}
-                src={image.url}
+                src={heroImage.url}
                 alt={button_text}
               />
             )}

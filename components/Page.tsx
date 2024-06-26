@@ -1,18 +1,21 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Track } from "@uniformdev/context-react";
+import { UniformComposition, UniformSlot } from "@uniformdev/canvas-react";
+import { EnrichmentData } from "@uniformdev/context";
+
 import { IPage, ITalk } from "../lib/contentstack";
 import { PageComponentsList } from "./PageComponentsList";
-import { EnrichmentData } from "@uniformdev/context";
 import TalksContext from "../lib/talksContext";
-// import { UniformComposition, UniformSlot } from "@uniformdev/canvas-react";
-// import { resolveRenderer } from "../components/composableComponents";
+import { resolveRenderer } from "../components/composableComponents";
+import { RootComponentInstance } from "@uniformdev/canvas";
 
 export type PageProps = {
   preview: boolean;
   page: IPage;
   talks: ITalk[] | undefined;
-  composition: any;
+  composition: RootComponentInstance;
+  notFound?: boolean;
 };
 
 const Page: NextPage<PageProps> = ({ page, talks, composition }) => {
@@ -20,6 +23,7 @@ const Page: NextPage<PageProps> = ({ page, talks, composition }) => {
   if (page?.context_enrichment_tags?.name) {
     enrichments.push(...page.context_enrichment_tags.name);
   }
+
   return (
     <Track behavior={enrichments}>
       <Head>
@@ -30,10 +34,13 @@ const Page: NextPage<PageProps> = ({ page, talks, composition }) => {
         />
       </Head>
       <TalksContext.Provider value={talks}>
-        {/* FYI: you can enable Canvas this way to co-exist with page definitions from Contentstack
-        <Composition data={composition} resolveRenderer={resolveRenderer}>
-          <Slot name="main" />
-        </Composition> */}
+        <UniformComposition
+          data={composition}
+          resolveRenderer={resolveRenderer}
+        >
+          <UniformSlot name="main" />
+        </UniformComposition>
+
         {page?.components && (
           <PageComponentsList components={page?.components} />
         )}

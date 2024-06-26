@@ -1,3 +1,4 @@
+import { AssetParamValue, AssetParamValueItem } from '@uniformdev/canvas';
 import { PersonalizedVariant, EnrichmentData } from '@uniformdev/context';
 
 export type Entry<T extends StandardEntryFields> = {
@@ -68,7 +69,7 @@ export interface HeroFields extends StandardEntryFields, PersonalizeCriteriaFiel
   button_link_slug: string;
 
   /** image */
-  image?: IAsset | undefined;
+  image?:  null | AssetParamValueItem[];
 }
 
 export type IHero = Entry<HeroFields>;

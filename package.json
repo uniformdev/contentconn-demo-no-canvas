@@ -31,6 +31,7 @@
     "@uniformdev/canvas": "19.161.0",
     "@uniformdev/canvas-contentstack": "17.3.0",
     "@uniformdev/canvas-react": "19.161.0",
+    "@uniformdev/canvas-next": "19.161.0",
     "@uniformdev/context": "19.161.0",
     "@uniformdev/context-edge-netlify": "19.161.0",
     "@uniformdev/context-gtag": "19.161.0",
